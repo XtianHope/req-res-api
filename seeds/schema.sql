@@ -6,24 +6,25 @@ USE api_db;
 
 --/////////////////  stores users database  /////////////////--
 CREATE TABLE users (
-    id INT NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     users_name VARCHAR(60) NOT NULL,
-    users_pw VARCHAR(60) NOT NULL,
+    users_password VARCHAR(60) NOT NULL,
     users_email VARCHAR(60) NOT NULL,
-    users_phone INT NOT NULL,
+    users_phone VARCHAR(10) NOT NULL,
     PRIMARY KEY (id)
 );
 
 --/////////////////  stores reservation info  /////////////////--
-CREATE TABLE reservation (
-    party_size INT,
-    res_time INT,
-   -- res_date INT,--
-    FOREIGN KEY (users_id),
+CREATE TABLE Reservations (
+    reservation_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    reservation_time DATETIME NOT NULL,
+    party_size INT NOT NULL,
+    FOREIGN KEY (user_id) 
     REFERENCES users(id)
 );
 
 --/////////////////  stores available times  /////////////////--
 CREATE TABLE available (
-    available_times INT NOT NULL,
+    available_times VARCHAR(5) NOT NULL,
 );

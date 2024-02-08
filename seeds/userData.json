@@ -1,7 +1,16 @@
 [
   {
-    "name": "placeholder",
-    "email": "placeholder",
-    "password": "placeholder"
+    "username": "JohnDoe",
+    "password": "Password12345"
+  },
+
+  {
+    "username": "NickRyan",
+    "password": "Password12345"
+  },
+
+  {
+    "username": "JaneSmith",
+    "password": "Password12345"
   }
 ]

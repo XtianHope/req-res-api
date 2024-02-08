@@ -17,7 +17,7 @@ CREATE TABLE users (
 CREATE TABLE Reservations (
     reservation_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT,
-    reservation_time DATETIME NOT NULL,
+    reservation_timestamp DATETIME NOT NULL,
     party_size INT NOT NULL,
     FOREIGN KEY (user_id) 
     REFERENCES users(id)

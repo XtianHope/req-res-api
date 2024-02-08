@@ -8,7 +8,6 @@ USE api_db;
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     users_name VARCHAR(60) NOT NULL,
-    users_password VARCHAR(60) NOT NULL,
     users_email VARCHAR(60) NOT NULL,
     users_phone VARCHAR(10) NOT NULL,
     PRIMARY KEY (id)

@@ -1,0 +1,59 @@
+<h2>{{fun}}</h2>
+<h3>{{#unless loggedIn}}logged out{{/unless}}</h3>
+{{#each users}}
+<h3>{{username}}</h3>
+{{/each}}
+<div class="columns is-mobile is-centered">
+  <div class="column is-two-fifths">
+    <div class="field">
+      <label class="label">Full Name</label>
+      <div class="control">
+        <input class="input is-info" type="text" placeholder="Text input">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control">
+        <input class="input is-info" type="email" placeholder="Email input" value="hello@">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Available Times</label>
+      <div class="control">
+        <div class="select">
+          <select>
+            <option>Select dropdown</option>
+            <option>With options</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Message</label>
+      <div class="control">
+        <textarea class="textarea" placeholder="Textarea"></textarea>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <label class="checkbox">
+          <input type="checkbox">
+          I agree to the <a href="#">terms and conditions</a>
+        </label>
+      </div>
+    </div>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-link">Submit</button>
+      </div>
+      <div class="control">
+        <button class="button is-link is-light">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

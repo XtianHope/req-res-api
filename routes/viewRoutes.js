@@ -10,7 +10,15 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/dashboard', (req, res) => {
-  res.render('dashboard');
+  res.render('dashboard', { layout: null });
+});
+
+router.get('/reservation', async (req, res) => {
+  const userData = await User.findAll();
+  const users = userData.map(o => o.get());
+  const loggedIn = req.session.loggedIn;
+
+  res.render('reservation', { fun: 'Hello', users, loggedIn });
 });
 
 module.exports = router;

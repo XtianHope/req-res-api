@@ -1,10 +1,10 @@
 
 -- //////////Seeds users table////////// --
-INSERT INTO users (id, users_name, users_email, users_phone)
+INSERT INTO users (id, users_name, users_phone)
 VALUES  
-(1, "John Doe", "john.d@email.com", '999-999-9999'),
-(2, 'Nick Ryan', 'nick.r@example.com', '987-654-3210'),
-(3'Jane Smith', 'jane@example.com', '987-654-3210');
+(1, "John Doe", '999-999-9999'),
+(2, 'Nick Ryan', '987-654-3210'),
+(3'Jane Smith', '987-654-3210');
 
 --///////////// Seeds available times  ///////////////--
 INSERT INTO available (available_times)

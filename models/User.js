@@ -8,17 +8,24 @@ class User extends Model {
 }
 User.init(
   {
-    username: {
+    id:{
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    users_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
+    phone_number: {
+      type: DataTypes.INTEGER, 
       validate: {
-        len: [8],
-      },
+        isNumeric: true,
+        len: [10, 15] 
+      }
     },
+
   },
   {
     hooks: {

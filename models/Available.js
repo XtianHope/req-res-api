@@ -11,6 +11,7 @@ Available.init(
     },
     {
         sequelize,
+        freezeTableName: true,
         modelName: 'available',
     }
 );

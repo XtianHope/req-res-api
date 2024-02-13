@@ -11,7 +11,7 @@ Reservations.init(
             allowNull: false,
         },
         timestamp: {
-            type: DataTypes.timestamp,
+            type: DataTypes.DATE,
             allowNull: false,
         },
         users_id: {
@@ -24,7 +24,8 @@ Reservations.init(
     },
     {
         sequelize,
-        timestamps: true,
+        timestamps: false,
+        freezeTableName: true,
         modelName: 'reservations',
     }
 );

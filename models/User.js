@@ -25,7 +25,6 @@ User.init(
         len: [10, 15] 
       }
     },
-
   },
   {
     hooks: {
@@ -36,6 +35,7 @@ User.init(
     },
     sequelize,
     timestamps: false,
+    freezeTableName: true,
     modelName: 'user',
   }
 );

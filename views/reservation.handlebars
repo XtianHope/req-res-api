@@ -1,7 +1,6 @@
 <head>
   <meta charset='utf-8' />
-  {{!--
-  <script src='fullcalendar/dist/index.global.js'></script> --}}
+
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
   <script>
 
@@ -9,11 +8,12 @@
       var calendarEl = document.getElementById('calendar');
       var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'timeGridWeek',
+        selectable: true,
         businessHours: {
           // days of week. an array of zero-based day of week integers (0=Sunday)
-          daysOfWeek: [1, 2, 3, 4], // Monday - Thursday
-          startTime: '10:00', // a start time (10am in this example)
-          endTime: '21:00', // an end time (6pm in this example)
+          daysOfWeek: [1, 2, 3, 4, 5], // Monday - Friday
+          startTime: '14:00', // a start time (2pm in this example)
+          endTime: '21:00', // an end time (9pm in this example)
           dateClick: function (info) {
             alert('Date: ' + info.dateStr);
             alert('Resource ID: ' + info.resource.id);
@@ -21,8 +21,10 @@
         }
       });
       calendar.render();
+      calendar.on('dateClick', function (info) {
+        console.log('You have selected ' + info.dateStr);
+      });
     });
-
   </script>
 </head>
 <h2>{{fun}}</h2>
@@ -56,16 +58,23 @@
     <div class="field">
       <label class="label">Message</label>
       <div class="control">
+        <script>
+          function reservation() {
+      calendar.getOption('locale');
+      calendar.setOption('locale', 'fr');
+      };
+      </script>
         <textarea class="textarea" placeholder="Textarea"></textarea>
       </div>
     </div>
 
     <div class="field">
       <div class="control">
-        <label class="checkbox">
-          <input type="checkbox">
-          I agree to the <a href="#">terms and conditions</a>
-        </label>
+        <p class="flex"> <label class="checkbox">
+            <input type="checkbox">
+        {{!--insert own terms and conditions url below --}}
+          </label> I agree to the <a href="https://jprestaurants.com/booking-terms-conditions">Terms and Conditions</a>
+        </p>
       </div>
     </div>
 

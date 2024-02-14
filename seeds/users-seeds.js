@@ -2,10 +2,11 @@ const { Users } =require('../models');
 
 const usersData = [
     {
-        users_id: 0,
-        users_email: null,
-        users_name: null,
+        id: 0,
+        username: null,
+        email: null,
         phone_number: 0,
+        password: null,
     },
 ];
 

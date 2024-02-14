@@ -14,7 +14,9 @@ Learnings
 - Throughout the development process, we have learned the importance of simplicity, reliability, and user experience. We understand that by addressing these aspects, we can create a solution that not only solves problems but also enhances the overall dining experience.
 
 ## Screenshots
-![Screenshot of Req Res Api](./images/logo-maker.png)
+![Screenshot of Req Res Api](./images/req-res-1.png)
+![Screenshot of Req Res Api](./images/req-res-2.png)
+![Screenshot of Req Res Api](./images/req-res-3.png)
 
 
 ## Links

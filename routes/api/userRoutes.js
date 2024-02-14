@@ -3,16 +3,24 @@ const router = require('express').Router();
 const { User } = require('../../models');
 const bcrypt = require('bcrypt');
 
-// Route to get all users
-router.get('/users', async (req, res) => {
+//Creating User
+router.post('/', async (req, res) => {
   try {
-    const users = await User.findAll();
-    res.json(users);
+    const user = await User.create({
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      res.redirect('/');
+    });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Server Error'});
+    console.log(err);
+    res.status(500).json(err);
   }
 });
+
 
 
 router.post('/login', async (req, res) => {
@@ -26,9 +34,9 @@ router.post('/login', async (req, res) => {
       }
 
       req.session.save(() => {
-        req.session.user_id = user.id;
         req.session.loggedIn = true;
-        res.status(200).json({ user: user.name, message: 'You are now logged in!' });
+        req.session.user_id = user.id;
+        res.redirect('/');
       });
     } catch (err) {
       res.status(500).json(err);

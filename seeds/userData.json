@@ -1,16 +1,22 @@
 [
   {
+    "username": "JohnJACKSON",
     "email": "john.d@email.com",
+    "phone_number": 9998524567,
     "password": "Password12345"
   },
 
   {
+    "username": "NickJACKSON",
     "email": "nick.r@example.com",
+    "phone_number": 998524567,
     "password": "Password12345"
   },
 
   {
-    "email": "jane@example.com",
+    "username": "JaneJACKSON",
+    "email": "jane.d@example.com",
+    "phone_number": 9998524567,
     "password": "Password12345"
   }
 ]

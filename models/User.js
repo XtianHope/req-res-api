@@ -14,16 +14,37 @@ User.init(
       autoIncrement: true,
       allowNull: false,
     },
-    users_name: {
+    username:{
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
+      validate: {
+        isAlphanumeric: true,
+        len: [1,60],
+      }
+    },
+    email:{
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true,
+        len: [7,100],
+      }
     },
     phone_number: {
-      type: DataTypes.INTEGER, 
+      type: DataTypes.DECIMAL, 
       validate: {
         isNumeric: true,
-        len: [10, 15] 
+        len: [10,15],
       }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [6,20],
+      },
     },
   },
   {
@@ -36,6 +57,7 @@ User.init(
     sequelize,
     timestamps: false,
     freezeTableName: true,
+    underscored: true,
     modelName: 'user',
   }
 );

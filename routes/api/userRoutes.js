@@ -3,8 +3,8 @@ const router = require('express').Router();
 const { User } = require('../../models');
 const bcrypt = require('bcrypt');
 
-// Route to creeate new users
-router.post('/', async (req, res) => {
+// Route to create new users
+router.post('/signup', async (req, res) => {
   try {
     const user = await User.create({
       username: req.body.username,
@@ -14,8 +14,8 @@ router.post('/', async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
-
-      res.status(200).json(user);
+      req.session.user_id = user.id;
+      res.redirect('/');
     });
   } catch (err) {
     console.log(err);
@@ -34,9 +34,9 @@ router.post('/login', async (req, res) => {
       }
 
       req.session.save(() => {
-        req.session.user_id = user.id;
         req.session.loggedIn = true;
-        res.status(200).json({ user: user.name, message: 'You are now logged in!' });
+        req.session.user_id = user.id;
+        res.redirect('/');
       });
     } catch (err) {
       res.status(500).json(err);

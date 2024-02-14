@@ -14,7 +14,7 @@ Reservations.init(
             type: DataTypes.DATE,
             allowNull: false,
         },
-        users_id: {
+        user_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'user',

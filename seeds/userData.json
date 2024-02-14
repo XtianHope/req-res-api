@@ -1,16 +1,22 @@
 [
   {
     "email": "john.d@email.com",
+    "name": "John Dark",
+    "phone_number":9998524567,
     "password": "Password12345"
   },
 
   {
     "email": "nick.r@example.com",
+    "name": "Nick Richards",
+    "phone_number":9998524567,
     "password": "Password12345"
   },
 
   {
-    "email": "jane@example.com",
+    "email": "jane.d@example.com",
+    "name": "Jane Dowell",
+    "phone_number":9998524567,
     "password": "Password12345"
   }
 ]

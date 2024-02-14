@@ -30,7 +30,7 @@ User.init(
       type: DataTypes.INTEGER, 
       validate: {
         isNumeric: true,
-        len: [10, 15] 
+        len: [10,15] 
       }
     },
     password: {

@@ -1,37 +1,60 @@
-<form action="/api/users/login" method="POST">
-  <div class="field">
-    <label class="label">Email</label>
-    <div class="control">
-      <input class="input is-success" type="email" name="email" id="id" placeholder="email@hello.com">
-      <span class="icon is-small is-left">
-        <i class="fas fa-user"></i>
-      </span>
-      <span class="icon is-small is-right">
-        <i class="fas fa-check"></i>
-      </span>
-    </div>
-    <p class="help is-success">Enter email</p>
+<div class="field">
+  <label class="label">Username</label>
+  <div class="control">
+    <input id="username" class="input is-success" type="text" placeholder="Username">
+    <span class="icon is-small is-left">
+      <i class="fas fa-user"></i>
+    </span>
+    <span class="icon is-small is-right">
+      <i class="fas fa-check"></i>
+    </span>
   </div>
-  <div class="field">
-    <label class="label">Password</label>
-    <div class="control">
-      <input class="input is-success" type="password" name="password" id="password" placeholder="Password">
-      <span class="icon is-small is-left">
-        <i class="fas fa-user"></i>
-      </span>
-      <span class="icon is-small is-right">
-        <i class="fas fa-check"></i>
-      </span>
-    </div>
-    <p class="help is-success">Enter password</p>
+  <p class="help is-success">Enter username</p>
+</div>
+
+<div class="field">
+  <label class="label">Email</label>
+  <div class="control">
+    <input id="email" class="input is-success" type="email" placeholder="Email">
+    <span class="icon is-small is-left">
+      <i class="fas fa-envelope"></i>
+    </span>
+    <span class="icon is-small is-right">
+      <i class="fas fa-check"></i>
+    </span>
+  </div>
+  <p class="help is-success">Enter email</p>
+</div>
+
+<div class="field">
+  <label class="label">Password</label>
+  <div class="control">
+    <input id="password" class="input is-success" type="password" placeholder="Password">
+    <span class="icon is-small is-left">
+      <i class="fas fa-lock"></i>
+    </span>
+    <span class="icon is-small is-right">
+      <i class="fas fa-check"></i>
+    </span>
   </div>
 
-  <div class="field is-grouped">
-    <div class="control">
-      <button class="button is-link" type="submit">Submit</button>
-    </div>
-    <div class="control">
-      <button class="button is-link is-light">Clear</button>
-    </div>
+<div class="field is-grouped">
+  <div class="control">
+     <button id="signupBtn" class="button is-link">Sign Up</button>
   </div>
-</form>
+  <div class="control">
+    <button class="button is-link is-light">Clear</button>
+  </div>
+</div>
+
+<script>
+  document.getElementById('signupBtn').addEventListener('click', function() {
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    console.log("Username:", username);
+    console.log("Email:", email);
+    console.log("Password:", password);
+  });
+</script>

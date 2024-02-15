@@ -16,7 +16,7 @@ Learnings
 ## Screenshots
 ![Screenshot of Req Res Api](./images/req-res-1.png)
 ![Screenshot of Req Res Api](./images/req-res-2.png)
-![Screenshot of Req Res Api](./images/req-res-3.png)
+
 
 
 ## Links

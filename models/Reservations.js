@@ -10,7 +10,7 @@ Reservations.init(
             autoIncrement: true,
             allowNull: false,
         },
-        timestamp: {
+        start: {
             type: DataTypes.DATE,
             allowNull: false,
         },

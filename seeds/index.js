@@ -1,7 +1,9 @@
 const sequelize = require('../config/connection');
-const { User } = require('../models');
+const { User, Reservations } = require('../models');
 
 const userData = require('./userData.json');
+
+const reservationData = require('./reservations-seeds');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -10,7 +12,8 @@ const seedDatabase = async () => {
     individualHooks: true,
     returning: true,
   });
-  console.log(users.map(o => o.get()));
+
+  await Reservations.bulkCreate(reservationData);
 
   process.exit(0);
 };

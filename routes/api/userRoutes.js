@@ -1,7 +1,9 @@
 const express = require('express');
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Reservations } = require('../../models');
 const bcrypt = require('bcrypt');
+
+const serialize = (data) => JSON.parse(JSON.stringify(data));
 
 // Route to create new users
 router.post('/signup', async (req, res) => {
@@ -17,6 +19,28 @@ router.post('/signup', async (req, res) => {
       req.session.user_id = user.id;
       res.redirect('/');
     });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/events', async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id, { include: [Reservations]});
+    const { reservations: events } = serialize(userData);
+    res.status(200).json(events);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.post('/reserve', async (req, res) => {
+  try {
+    console.log('START', req.body);
+    await Reservations.create({ start: req.body.start, user_id: req.session.user_id });
+    res.status(200).json("Reserved");
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

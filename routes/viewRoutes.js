@@ -3,10 +3,10 @@ const { User } = require('../models');
 const withAuth = require('../utils/auth')
 
 router.get('/', withAuth, async (req, res) => {
-  const userData = await User.findAll();
-  const users = userData.map(o => o.get());
+  const userData = await User.findByPk(req.session.user_id);
+  const user = userData.get();
   const loggedIn = req.session.loggedIn;
-  res.render('reservation');
+  res.render('reservation', { user });
 });
 
 router.get('/login', (req, res) => {

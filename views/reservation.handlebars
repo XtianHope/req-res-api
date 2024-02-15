@@ -1,97 +1,104 @@
+<head>
+  <meta charset='utf-8' />
 
-  <head>
-    <meta charset='utf-8' />
-
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
-    <script>
-      fetch('/api/users/events', {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-        .then((response) => response.json())
-        .then((events) => {
-          var calendarEl = document.getElementById('calendar');
-          var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'timeGridWeek',
-            selectable: true,
-            selectConstraint: 'businessHours',
-            businessHours: {
-              // days of week. an array of zero-based day of week integers (0=Sunday)
-              daysOfWeek: [1, 2, 3, 4, 5], // Monday - Friday
-              startTime: '14:00', // a start time (2pm in this example)
-              endTime: '21:00', // an end time (9pm in this example)
-            },
-            events: events,
-          });
-          calendar.render();
-          calendar.on('dateClick', function (info) {
-            console.log('INFO', info);
-            console.log('You have selected ' + info.dateStr);
-            document.getElementById("resInfo").textContent = 'You have selected ' + new Date(info.dateStr).toLocaleString();
-            document.getElementById("resInfo").dataset.start = info.dateStr;
-          });
-        });
-    </script>
-  </head>
-  {{!-- <h2>{{fun}}</h2>
-  <h3>{{#unless loggedIn}}logged out{{/unless}}</h3>
-  {{#each users}}
-  <h3>{{username}}</h3>
-  {{/each}} --}}
-  <h2 class="title is-size-1 has-text-centered">RESERVATION</h2>
-  <div class="field">
-    <label class="label">Username</label>
-    <div class="control">
-      <input class="input is-info" type="username" name="username" id="username" placeholder="Username" value="{{user.username}}">
-    </div>
-  </div>
-
-  <div class="field">
-    <label class="label">Email</label>
-    <div class="control">
-      <input class="input is-info" type="email" name="email" id="email" placeholder="Email" value="{{user.email}}">
-    </div>
-  </div>
-
-  <div class="field">
-    <label class="label">Available Times</label>
-    <div class="control">
-      <div id='calendar'></div>
-    </div>
-  </div>
-
-  <div class="field">
-    <div class="control">
-      <p id="resInfo">Please select a time to reserve.</p>
-    </div>
-  </div>
-
-  <div class="field is-grouped">
-    <div class="control">
-      <button id="submit" class="button is-link">Submit</button>
-    </div>
-  </div>
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
 
   <script>
-    const submitBtn = document.querySelector('#submit');
-    submitBtn.addEventListener('click', function(event) {
-
-      event.preventDefault();
-
-      console.log(document.getElementById("resInfo").dataset);
-
-      fetch('/api/users/reserve', {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        method: 'POST',
-        body: JSON.stringify(document.getElementById("resInfo").dataset)
-      }).then((response) => {
-        if (response.ok) {
-          location.assign('/');
-        }
-      })
+    fetch('/api/users/events', {
+      headers: {
+        'Content-Type': 'application/json'
+      }
     })
+      .then((response) => response.json())
+      .then((events) => {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'timeGridWeek',
+          selectable: true,
+          selectConstraint: 'businessHours',
+          businessHours: {
+            // days of week. an array of zero-based day of week integers (0=Sunday)
+            daysOfWeek: [1, 2, 3, 4, 5], // Monday - Friday
+            startTime: '14:00', // a start time (2pm in this example)
+            endTime: '21:00', // an end time (9pm in this example)
+          },
+          events: events,
+        });
+        calendar.render();
+        calendar.on('dateClick', function (info) {
+          console.log('INFO', info);
+          console.log('You have selected ' + info.dateStr);
+          document.getElementById("resInfo").textContent = 'You have selected ' + new Date(info.dateStr).toLocaleString();
+          document.getElementById("resInfo").dataset.start = info.dateStr;
+        });
+      });
   </script>
+</head>
+{{!-- <h2>{{fun}}</h2>
+<h3>{{#unless loggedIn}}logged out{{/unless}}</h3>
+{{#each users}}
+<h3>{{username}}</h3>
+{{/each}} --}}
+<h2 class="title is-size-1 has-text-centered">RESERVATION</h2>
+<div class="field">
+  <label class="label">Username</label>
+  <div class="control">
+    <input class="input is-info" type="username" name="username" id="username" placeholder="Username"
+      value="{{user.username}}">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Email</label>
+  <div class="control">
+    <input class="input is-info" type="email" name="email" id="email" placeholder="Email" value="{{user.email}}">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Available Times</label>
+  <div class="control">
+    <div id='calendar'></div>
+  </div>
+</div>
+
+<div class="field">
+  <div class="control">
+    <p id="resInfo">Please select a time to reserve.</p>
+  </div>
+</div>
+
+<div class="field is-grouped">
+  <div class="control">
+    <button id="submit" class="button is-link">Submit</button>
+  </div>
+  <div class="control">
+  <button id="logout" class="button is-danger">Logout</button>
+  <script src="./js/logout.js"></script>
+</div>
+</div>
+
+
+
+<script>
+  const submitBtn = document.querySelector('#submit');
+  submitBtn.addEventListener('click', function (event) {
+
+    event.preventDefault();
+
+    console.log(document.getElementById("resInfo").dataset);
+
+    fetch('/api/users/reserve', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify(document.getElementById("resInfo").dataset)
+    }).then((response) => {
+      if (response.ok) {
+        location.assign('/');
+      }
+    })
+  })
+</script>

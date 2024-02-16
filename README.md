@@ -1,5 +1,12 @@
 # req-res-api
 
+
+
+(Req,Res), short for ‘Request Reservation’, is an api that will allow anyone to manage reservations. Be it restaurants, doctors offices, banks, lawyers, you name it, (ReqRes) can reserve it! 
+Easily include this tool in any website to facilitate not only the managing of reservations, but also the capturing of customer information for future communication!
+
+
+
 Motivation
 - Our motivation is to transform the way restaurants manage their reservation process. We believe that by providing an easy-to-use and efficient API, we can help elevate the dining experience for both restaurant owners and their customers.
 
@@ -13,9 +20,17 @@ Problems
 Learnings
 - Throughout the development process, we have learned the importance of simplicity, reliability, and user experience. We understand that by addressing these aspects, we can create a solution that not only solves problems but also enhances the overall dining experience.
 
+Technologies Used
+- Express, Handlebars, MySQL2, Sequelize, Javascript, Bcrypt, Bulma CSS, Heroku
+
+
+
+
 ## Screenshots
 ![Screenshot of Req Res Api](./images/req-res-1.png)
 ![Screenshot of Req Res Api](./images/req-res-2.png)
+
+
 
 
 
